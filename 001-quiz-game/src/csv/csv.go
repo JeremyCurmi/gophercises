@@ -3,7 +3,9 @@ package csv
 import (
 	"encoding/csv"
 	"log"
+	"math/rand"
 	"os"
+	"time"
 )
 
 // ReadCSVFile loads a CSV file
@@ -20,4 +22,10 @@ func ReadCSVFile(filename string) [][]string {
 		log.Fatalf("Unable to parse csv file %v with error %v", filename, err)
 	}
 	return records
+}
+
+func ShuffleData(data [][]string) [][]string {
+	rand.Seed(time.Now().UnixNano())
+	rand.Shuffle(len(data), func(i, j int) { data[i], data[j] = data[j], data[i] })
+	return data
 }

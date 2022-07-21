@@ -8,5 +8,8 @@ import (
 
 func main() {
 	data := csv.ReadCSVFile(*config.Filename)
+	if *config.ShuffleQuestions {
+		data = csv.ShuffleData(data)
+	}
 	logic.StartQuiz(data, *config.TimeLimit)
 }
