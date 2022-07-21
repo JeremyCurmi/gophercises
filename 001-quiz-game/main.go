@@ -8,5 +8,5 @@ import (
 
 func main() {
 	data := csv.ReadCSVFile(*config.Filename)
-	logic.StartQuiz(data)
+	logic.StartQuiz(data, *config.TimeLimit)
 }
